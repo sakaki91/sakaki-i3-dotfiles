@@ -28,20 +28,14 @@ about .bash_profile:
 The .bash_profile file contains a "mini-display-manager" written in shell script (bash) that runs directly in the TTY immediately after logging in, and is entirely focused on i3wm.
 Even if nothing is configured, or if the files don't exist, it creates, injects, and configures i3wm as the default initializer, and immediately after logging in, it will show the current kernel version and architecture, and the login time, along with a simple question: 'Do you want to start X11?', answering yes starts the X11 session, and answering no returns it to the TTY.
 
-<<<<<<< HEAD
-
 about i3:
 ---------
 i3 is a tiling window manager.
-
 
 about i3blocks:
 ---------------
 i3blocks is a alternative status bar for i3.
 
-
-=======
->>>>>>> 0200962bea5df776d05de7b2dab078fc4278cbc2
 about auto_proton:
 ------------------
 auto_proton is a simple script that automates the entire instalation process (and removing) of GE-Proton.
