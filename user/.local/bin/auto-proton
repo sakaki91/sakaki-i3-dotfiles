@@ -1,0 +1,33 @@
+#!/bin/bash
+
+GE_LATEST="10-34"
+TEMP=${HOME}/.tmp
+MODE="Install"
+
+mkdir -p "$TEMP"
+while true; do
+	printf "Insert GE-Proton version:\n=========================\n"
+	[[ $1 == "--remove" ]] && printf "Available versions:\n" && ls "$HOME/.local/share/Steam/compatibilitytools.d/" | grep "GE-Proton" && MODE="Remove"
+	read -p "[$MODE] $ GE-Proton" GE_VERSION
+	[[ "$GE_VERSION" == "Latest" || "$GE_VERSION" == "latest" ]] && GE_VERSION="10-34"
+	if [[ $1 == "--remove" ]]; then
+		rm -rf "$HOME/.local/share/Steam/compatibilitytools.d/GE-Proton$GE_VERSION"
+	else
+		wget -c https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton$GE_VERSION/GE-Proton$GE_VERSION.tar.gz --directory-prefix="$TEMP"
+		tar -xvf "$TEMP/GE-Proton$GE_VERSION.tar.gz" --directory "$HOME/.local/share/Steam/compatibilitytools.d/"
+		rm -rf "$TEMP"
+	fi
+	printf "\nDo you want do select another version?\n[Y/n]\n"
+	read -p "> " selectAnother
+	[[ -z $selectAnother ]] && selectAnother="y"
+	if [[ $selectAnother == "Y" || $selectAnother == "y" ]]; then
+		clear
+		continue
+	elif [[ $selectAnother == "N" || $selectAnother == "n" ]]; then
+		exit
+	else
+		printf "\e[1;31mInvalid option.\033[0m\n"
+		sleep 1.5
+		clear
+	fi
+done
