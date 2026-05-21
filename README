@@ -7,20 +7,39 @@ Repository containing my X11/i3wm configuration files.
 --------------------
 "$HOME"/.bashrc
 "$HOME"/.bash_profile
+"$HOME"/.config/kitty
+"$HOME"/.config/rofi
 "$HOME"/.local/bin/auto-proton
+
+installation:
+-------------
+sudo apt install kitty rofi i3
+git clone https://github.com/sakaki91/sakaki-i3-dotfiles
+cd sakaki-i3-dotfiles
+./install.sh
 
 
 about .bashrc:
-----------------
+--------------
 The .bashrc file contains some useful "aliases" to save time, especially when tracking disk directories and Wine/Proton prefixes.
 
 
 about .bash_profile:
-----------------------
+--------------------
 The .bash_profile file contains a "mini-display-manager" written in shell script (bash) that runs directly in the TTY immediately after logging in, and is entirely focused on i3wm.
 Even if nothing is configured, or if the files don't exist, it creates, injects, and configures i3wm as the default initializer, and immediately after logging in, it will show the current kernel version and architecture, and the login time, along with a simple question: 'Do you want to start X11?', answering yes starts the X11 session, and answering no returns it to the TTY.
 
 
 about auto_proton:
---------------------
+------------------
 auto_proton is a simple script that automates the entire instalation process (and removing) of GE-Proton.
+
+
+about kitty:
+------------
+Kitty is a fast, feature-rich, GPU-accelerated terminal emulator and multiplexer.
+
+
+about rofi:
+-----------
+rofi is a window switcher, application launcher and dmenu replacement.
