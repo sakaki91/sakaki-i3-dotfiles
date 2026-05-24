@@ -4,13 +4,15 @@ Repository containing my X11/i3wm configuration files.
 
 * currently present:
 --------------------
-"$HOME"/.bashrc
-"$HOME"/.bash_profile
-"$HOME"/.config/i3
-"$HOME"/.config/i3blocks
-"$HOME"/.config/kitty
-"$HOME"/.config/rofi
-"$HOME"/.local/bin/auto-proton
+"$HOME"/.bashrc # "shell config/autostart"
+"$HOME"/.bash_profile # "profile autostart"
+"$HOME"/.config/i3 # wm
+"$HOME"/.config/i3blocks # i3 custom bar
+"$HOME"/.config/kitty # terminal
+"$HOME"/.config/rofi # dmenu alternative
+"$HOME"/.local/bin/protonmananager # protonGE manager
+"$HOME"/.local/bin/slackmount # slack disk mounter
+"$HOME"/.local/bin/basicc # basic calculator
 
 installation:
 -------------
@@ -18,32 +20,3 @@ sudo apt install kitty rofi i3 ttf-iosevka-nerd
 git clone https://github.com/sakaki91/sakaki-i3-dotfiles
 cd sakaki-i3-dotfiles
 ./install.sh
-
-about .bashrc:
---------------
-The .bashrc file contains some useful "aliases" to save time, especially when tracking disk directories and Wine/Proton prefixes.
-
-about .bash_profile:
---------------------
-The .bash_profile file contains a "mini-display-manager" written in shell script (bash) that runs directly in the TTY immediately after logging in, and is entirely focused on i3wm.
-Even if nothing is configured, or if the files don't exist, it creates, injects, and configures i3wm as the default initializer, and immediately after logging in, it will show the current kernel version and architecture, and the login time, along with a simple question: 'Do you want to start X11?', answering yes starts the X11 session, and answering no returns it to the TTY.
-
-about i3:
----------
-i3 is a tiling window manager.
-
-about i3blocks:
----------------
-i3blocks is a alternative status bar for i3.
-
-about auto_proton:
-------------------
-auto_proton is a simple script that automates the entire instalation process (and removing) of GE-Proton.
-
-about kitty:
-------------
-Kitty is a fast, feature-rich, GPU-accelerated terminal emulator and multiplexer.
-
-about rofi:
------------
-rofi is a window switcher, application launcher and dmenu replacement.
