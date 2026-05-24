@@ -17,9 +17,9 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec kitty
 
 # start TUI file manager
-bindsym $mod+F1 exec kitty -- ranger
-# start GUI file manager
-bindsym $mod+Shift+F1 exec nemo
+bindsym $mod+z exec kitty -- ranger
+# start Flameshot (Screenshot)
+bindsym $mod+x exec flameshot full -p ~/Pictures/
 
 # kill focused window
 bindsym $mod+c kill
@@ -154,7 +154,7 @@ gaps inner 5
 gaps outer 5
 
 # Border Color:
-client.focused           #ff5555	#ff5555    	#ffffff #ff0000
+client.focused           #ffffff	#ffffff    	#000000 #ffffff
 
 bar {
         status_command i3blocks
@@ -185,3 +185,13 @@ exec --no-startup-id dbus-update-activation-environment --all
 
 # Opens the XDG Desktop Portal:
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+
+for_window [class="pavucontrol"] floating enable
+for_window [class="kitty"] floating enable
+for_window [class="kitty"] resize set 800 500
+for_window [class="Blueman-manager"] floating enable
+for_window [class="steam"] floating enable
+for_window [class="GStreamer"] floating enable
+for_window [class="GStreamer"] resize set 324 700
+for_window [class="teknoparrotui.exe"] floating enable
+

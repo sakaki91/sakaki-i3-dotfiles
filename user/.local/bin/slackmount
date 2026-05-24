@@ -1,0 +1,29 @@
+#!/bin/bash
+VERSION="SLACKMOUNT 1.0 POWERED BY @SAKAKI91"
+
+if [[ $1 == "--set-mountpoint" ]]; then
+	read -p "path > " DISK_DEFAULT_PATH
+	if [[ $DISK_DEFAULT_PATH == "/" || $DISK_DEFAULT_PATH == "/boot" || $DISK_DEFAULT_PATH == "/etc" || $DISK_DEFAULT_PATH == "/sys" || $DISK_DEFAULT_PATH == "/usr" ]]; then
+		printf "ERROR: Restricted paths\n"
+		exit
+	else
+		echo "DISK_DEFAULT_PATH=$DISK_DEFAULT_PATH" > "$HOME"/.config/slack-mountpoint
+		exit
+	fi
+fi
+[[ ! -f "$HOME"/.config/slack-mountpoint ]] && printf "ERROR: mountpoint not found\nrun: slackmount --set-mountpoint\n" && exit
+source "$HOME"/.config/slack-mountpoint
+
+if [[ $1 == "--umount" ]]; then
+	sudo umount /dev/$PARTITION
+	exit
+fi
+
+clear
+lsblk
+echo "" && read -p "partition ;; " PARTITION
+[[ ! -b /dev/"$PARTITION" ]] && printf "ERROR: Invalid Partition\n" && exit
+echo "PARTITION=$PARTITION" >> "$HOME"/.config/slack-mountpoint
+echo "" && sudo mount /dev/$PARTITION "$DISK_DEFAULT_PATH"
+(cd $DISK_DEFAULT_PATH && pwd)
+ls -lh "$DISK_DEFAULT_PATH" && echo ""

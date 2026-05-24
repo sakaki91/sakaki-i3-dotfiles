@@ -1,0 +1,60 @@
+#!/bin/bash
+VERSION="BASICC 1.0 (SHELL) POWERED BY @SAKAKI91"
+
+if [[ $1 == "--help" ]]; then
+	printf "$VERSION\n"
+	printf "%-10s %-1s\n" "--help" "show this message"
+	printf "%-10s %-1s\n\n" "--version" "show version"
+	printf "operations:   +    -    *    /\n"
+	exit
+elif [[ $1 == "--version" ]]; then
+	printf "$VERSION\n"
+	exit
+fi
+
+clear
+while true; do
+	read -p "value1 ;; " value
+	while true; do
+		[[ $OPERATION_ERROR == 1 ]] && printf "value1 ;; $value\n"
+		read -p "operation ;; " operation
+		if [[ $operation != "+" && $operation != "-" && $operation != "*" && $operation != "/" ]]; then
+			OPERATION_ERROR=1
+			clear
+			printf "value1 ;; $value\nERROR: Invalid Operation (;; $operation)\n"
+			sleep 2
+			clear
+		else
+			break
+		fi
+	done		
+	read -p "value2 ;; " value2
+	case $operation in
+		"+")
+			result=$(($value+$value2))
+		;;
+		"-")
+			result=$(($value-$value2))
+		;;
+		"*")
+			result=$(($value*$value2))
+		;;
+		"/")
+			result=$(($value/$value2))
+		;;
+	esac
+	printf "result: $result\n"
+	while true; do
+		read -p "(:q to exit) > " tryAgain
+		if [[ $tryAgain == ":q" || $tryAgain == ":Q" ]]; then
+			printf "EXIT_SUCCESS\n"
+			exit
+		elif [[ $tryAgain == "\\" ]]; then
+			clear
+			break
+		else
+			printf "ERROR: Invalid operation\n"
+		fi
+	done
+done
+
