@@ -2,7 +2,7 @@
 
 dotfiles=$(pwd)
 set -x
-cp -rT "$dotfiles"/.wallpaper "$HOME"/.wallpaper
+cp -rT "$dotfiles"/user/.wallpaper.jpg "$HOME"/.wallpaper.jpg
 cp -rT "$dotfiles"/user/.bashrc "$HOME"/.bashrc
 cp -rT "$dotfiles"/user/.bash_profile "$HOME"/.bash_profile
 cp -rT "$dotfiles"/user/.config/rofi "$HOME"/.config/rofi
