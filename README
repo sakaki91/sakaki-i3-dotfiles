@@ -16,7 +16,5 @@ Repository containing my X11/i3wm configuration files.
 
 installation:
 -------------
-sudo apt install kitty rofi i3 ttf-iosevka-nerd
-git clone https://github.com/sakaki91/sakaki-i3-dotfiles
-cd sakaki-i3-dotfiles
-./install.sh
+$ sudo pacman -S feh kitty rofi i3 ttf-iosevka-nerd
+$ (git clone https://github.com/sakaki91/sakaki-i3-dotfiles && cd sakaki-i3-dotfiles && ./install.sh)
